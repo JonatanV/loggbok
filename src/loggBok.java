@@ -7,12 +7,14 @@ public class loggBok {
         printMenu();
         int input = tgb.nextInt();
         ArrayList<String> posts = new ArrayList<String>();
+
         switch (input) {
             case 1:
                 System.out.println("Under konstruktion");
                 break;
             case 2:
                 System.out.println("Under konstruktion");
+                add(posts, tgb);
                 break;
             case 3:
                 System.out.println("Under konstruktion");
@@ -30,6 +32,17 @@ public class loggBok {
                 System.out.println("Ogiltigt input");
                 break;
         }
+
+
+    }
+
+
+
+
+
+    private static void add(ArrayList<String> posts, Scanner tgb) {
+        String newpost = tgb.nextLine();
+        posts.add(newpost);
     }
 
 
