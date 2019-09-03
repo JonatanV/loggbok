@@ -1,24 +1,29 @@
+import javax.print.DocFlavor;
+import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class loggBok {
     public static void main(String[] args) {
-    while(true) {
         Scanner tgb = new Scanner(System.in);
-        printMenu();
-        int input = tgb.nextInt();
-        String fix = tgb.nextLine();
         ArrayList<String> posts = new ArrayList<String>();
+        while(true) {
+            printMenu();
 
-        choose(tgb, input, posts);
+
+
+            choose(tgb, posts);
 
         }
     }
 
-    private static void choose(Scanner tgb, int input, ArrayList<String> posts) {
+    private static void choose(Scanner tgb, ArrayList<String> posts) {
+        int input = tgb.nextInt();
+        String fix = tgb.nextLine();
         switch (input) {
             case 1:
-                System.out.println("Under konstruktion");
+                System.out.println("Visa");
+                show(posts);
                 break;
             case 2:
                 add(posts, tgb);
@@ -40,6 +45,10 @@ public class loggBok {
                 System.out.println("Ogiltigt input");
                 break;
         }
+    }
+
+    private static void show(ArrayList<String> posts) {
+        System.out.println(posts);
     }
 
     private static void quit() {
