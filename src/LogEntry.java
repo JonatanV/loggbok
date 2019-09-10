@@ -25,14 +25,14 @@ public class LogEntry {
 
     @Override
     public String toString() {
-        return "LogEntry{" +
-                "createdAt=" + createdAt +
-                ", updatedAt=" + updatedAt +
-                ", message='" + messege + '\'' +
-                '}';
+    return  "createdAt = 2" + createdAt + '\n'+
+            " updatedAt = " + updatedAt +'\n'+
+            " message =" + messege + '\n'
+            ;
     }
 
-    public void update(String message){
-
+    public void update(String newMessage){
+        this.messege = newMessage;
+        updatedAt = new Date();
     }
 }

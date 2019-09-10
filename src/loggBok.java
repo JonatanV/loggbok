@@ -25,6 +25,7 @@ public class loggBok {
                 break;
             case 3:
                 System.out.println("Under konstruktion");
+                edit(posts, tgb);
                 break;
             case 4:
                 System.out.println("Under konstruktion");
@@ -33,12 +34,27 @@ public class loggBok {
                 System.out.println("Under konstruktion");
                 break;
             case 6:
-                System.out.println("Under konstruktion");
+                System.out.println("Avsluta");
                 quit();
                 break;
             default:
                 System.out.println("Ogiltigt input");
                 break;
+        }
+    }
+
+    private static void edit(ArrayList<LogEntry> posts, Scanner tgb) {
+        System.out.println("Välj en post att redigera ");
+        index(posts);
+        int elementAt = tgb.nextInt();
+        tgb.nextLine();
+        String newMessage = tgb.nextLine();
+        posts.get(elementAt).update(newMessage2);
+    }
+
+    private static void index(ArrayList<LogEntry> posts) {
+        for (int i = 0; i < posts.size(); i++) {
+            System.out.println(i + posts.get(i).toString());
         }
     }
 
