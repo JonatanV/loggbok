@@ -1,23 +1,18 @@
-import javax.print.DocFlavor;
-import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class loggBok {
     public static void main(String[] args) {
+
         Scanner tgb = new Scanner(System.in);
-        ArrayList<String> posts = new ArrayList<String>();
+        ArrayList<LogEntry> posts = new ArrayList<LogEntry>();
         while(true) {
             printMenu();
-
-
-
             choose(tgb, posts);
-
         }
     }
 
-    private static void choose(Scanner tgb, ArrayList<String> posts) {
+    private static void choose(Scanner tgb, ArrayList<LogEntry> posts) { //gör att man kan välja ett alternativ
         int input = tgb.nextInt();
         String fix = tgb.nextLine();
         switch (input) {
@@ -47,7 +42,7 @@ public class loggBok {
         }
     }
 
-    private static void show(ArrayList<String> posts) {
+    private static void show(ArrayList<LogEntry> posts) { //visar vad som finns i ArrayListen
         System.out.println(posts);
     }
 
@@ -56,13 +51,13 @@ public class loggBok {
     }
 
 
-    private static void add(ArrayList<String> posts, Scanner tgb) {
-        String newpost = tgb.nextLine();
-        posts.add(newpost);
+    private static void add(ArrayList<LogEntry> posts, Scanner tgb) { //Lägger till en ny post
+        String newPost = tgb.nextLine();
+        posts.add(new LogEntry(newPost));
     }
 
 
-    private static void printMenu(){
+    private static void printMenu(){ // skriver ut menyn
         System.out.println("Välj ett alternativ" + "\n"+
                 "1. Visa" +"\n"+
                 "2. Lägg till post" + "\n"+
