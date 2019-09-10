@@ -49,7 +49,7 @@ public class loggBok {
         int elementAt = tgb.nextInt();
         tgb.nextLine();
         String newMessage = tgb.nextLine();
-        posts.get(elementAt).update(newMessage2);
+        posts.get(elementAt).update(newMessage);
     }
 
     private static void index(ArrayList<LogEntry> posts) {
