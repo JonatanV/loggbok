@@ -1,3 +1,4 @@
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -24,11 +25,12 @@ public class loggBok {
                 add(posts, tgb);
                 break;
             case 3:
-                System.out.println("Under konstruktion");
+                System.out.println("REDIGERA");
                 edit(posts, tgb);
                 break;
             case 4:
-                System.out.println("Under konstruktion");
+                System.out.println("SPARA");
+                save(posts);
                 break;
             case 5:
                 System.out.println("Under konstruktion");
@@ -41,6 +43,26 @@ public class loggBok {
                 System.out.println("Ogiltigt input");
                 break;
         }
+    }
+
+    private static void save(ArrayList<LogEntry> posts) {
+        String filenameBin = "randomNumbers.bin";
+        try {
+            DataOutputStream binOut = new DataOutputStream(new BufferedOutputStream(new FileOutputStream(filenameBin)));
+            binOut.writeChars(String.valueOf(posts));
+            binOut.close();
+        }
+        catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+
+        }
+        try {
+            DataInputStream binIn = new DataInputStream(new BufferedInputStream(new FileInputStream(filenameBin)));
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+
     }
 
     private static void edit(ArrayList<LogEntry> posts, Scanner tgb) {
@@ -59,7 +81,7 @@ public class loggBok {
     }
 
     private static void show(ArrayList<LogEntry> posts) { //visar vad som finns i ArrayListen
-        System.out.println(posts);
+        System.out.println(posts + "\n");
     }
 
     private static void quit() {
