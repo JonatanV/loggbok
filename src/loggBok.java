@@ -71,7 +71,9 @@ public class loggBok {
         String filenameBin = "randomNumbers.bin";
         try {
             DataOutputStream binOut = new DataOutputStream(new BufferedOutputStream(new FileOutputStream(filenameBin)));
-            binOut.writeChars(String.valueOf(posts));
+            for(LogEntry l : posts) {
+                binOut.writeChars(l.toLong());
+            }
             binOut.close();
         } catch (FileNotFoundException e) {
             e.printStackTrace();

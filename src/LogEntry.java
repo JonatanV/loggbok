@@ -10,7 +10,11 @@ public class LogEntry {
         createdAt = new Date();
         updatedAt = new Date();
     }
-
+    public newLog(String message) {
+        this.messege = message;
+        createdAt = new Date();
+        updatedAt = new Date();
+    }
     public Date getCreatedAt() {
         return createdAt;
     }
