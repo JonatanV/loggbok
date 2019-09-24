@@ -53,11 +53,13 @@ public class loggBok {
             while (binIn.available() > 0) {
 
                 char c;
+                long createdAt = binIn.readLong();
+                long updatedAt = binIn.readLong();
                 String msg = "";
                 while ((c = binIn.readChar()) != ',' && binIn.available() > 0) {
                     msg += c;
                 }
-                posts.add(new LogEntry(msg));
+                posts.add(new LogEntry(msg, createdAt, updatedAt));
             }
             binIn.close();
         } catch (FileNotFoundException e) {

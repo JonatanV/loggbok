@@ -35,9 +35,9 @@ public class LogEntry {
             ;
     }
     public String toLong(){
-        return createdAt.getTime()+ '\n'+','+
-                 updatedAt.getTime()  +'\n'+','+
-                " message =" + messege + '\n'+','
+        return createdAt.getTime()+ '\n'+
+                 updatedAt.getTime()  +'\n'+
+                " message =" + messege + '\n'
         ;
     }
 
