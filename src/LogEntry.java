@@ -10,10 +10,10 @@ public class LogEntry {
         createdAt = new Date();
         updatedAt = new Date();
     }
-    public newLog(String message) {
+    public LogEntry(String message, long createdAt, long updatedAt) {
         this.messege = message;
-        createdAt = new Date();
-        updatedAt = new Date();
+        this.createdAt = new Date(createdAt);
+        this.updatedAt = new Date(updatedAt);
     }
     public Date getCreatedAt() {
         return createdAt;
