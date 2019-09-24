@@ -67,6 +67,7 @@ public class loggBok {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        System.out.print(posts);
     }
 
     private static void save(ArrayList<LogEntry> posts) {
