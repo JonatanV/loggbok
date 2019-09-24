@@ -7,7 +7,7 @@ public class loggBok {
 
         Scanner tgb = new Scanner(System.in);
         ArrayList<LogEntry> posts = new ArrayList<LogEntry>();
-        while(true) {
+        while (true) {
             printMenu();
             choose(tgb, posts);
         }
@@ -33,15 +33,37 @@ public class loggBok {
                 save(posts);
                 break;
             case 5:
-                System.out.println("Under konstruktion");
+                System.out.println("LÄS IN");
+                read(posts);
                 break;
             case 6:
-                System.out.println("Avsluta");
+                System.out.println("AVSLUTA");
                 quit();
                 break;
             default:
                 System.out.println("Ogiltigt input");
                 break;
+        }
+    }
+
+    private static void read(ArrayList<LogEntry> posts) {
+        String filenameBin = "randomNumbers.bin";
+        try {
+            DataInputStream binIn = new DataInputStream(new BufferedInputStream(new FileInputStream(filenameBin)));
+            while (binIn.available() > 0) {
+
+                char c;
+                String msg = "";
+                while ((c = binIn.readChar()) != ',' && binIn.available() > 0) {
+                    msg += c;
+                }
+                posts.add(new LogEntry(msg));
+            }
+            binIn.close();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
@@ -51,18 +73,11 @@ public class loggBok {
             DataOutputStream binOut = new DataOutputStream(new BufferedOutputStream(new FileOutputStream(filenameBin)));
             binOut.writeChars(String.valueOf(posts));
             binOut.close();
-        }
-        catch (FileNotFoundException e) {
+        } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {
 
         }
-        try {
-            DataInputStream binIn = new DataInputStream(new BufferedInputStream(new FileInputStream(filenameBin)));
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-
     }
 
     private static void edit(ArrayList<LogEntry> posts, Scanner tgb) {
@@ -95,13 +110,13 @@ public class loggBok {
     }
 
 
-    private static void printMenu(){ // skriver ut menyn
-        System.out.println("Välj ett alternativ" + "\n"+
-                "1. Visa" +"\n"+
-                "2. Lägg till post" + "\n"+
-                "3. Uppdatera" +"\n"+
-                "4. Spara" +"\n"+
+    private static void printMenu() { // skriver ut menyn
+        System.out.println("Välj ett alternativ" + "\n" +
+                "1. Visa" + "\n" +
+                "2. Lägg till post" + "\n" +
+                "3. Uppdatera" + "\n" +
+                "4. Spara" + "\n" +
                 "5. LÄs in" + "\n" +
-                "6. Avsluta" );
+                "6. Avsluta");
     }
 }

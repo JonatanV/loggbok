@@ -30,6 +30,12 @@ public class LogEntry {
             " message =" + messege + '\n'
             ;
     }
+    public String toLong(){
+        return createdAt.getTime()+ '\n'+','+
+                 updatedAt.getTime()  +'\n'+','+
+                " message =" + messege + '\n'+','
+        ;
+    }
 
     public void update(String newMessage){
         this.messege = newMessage;
